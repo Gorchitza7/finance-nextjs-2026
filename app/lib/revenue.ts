@@ -62,5 +62,10 @@ export async function getDailyRevenue() {
   ];
 
   const rates = parseRates(ratesData);
-  return { ...calculateRevenue(transactions, rates), rates, currency: TARGET_CURRENCY };
+  return {
+    ...calculateRevenue(transactions, rates),
+    successfulPaymentsCount: transactions.length,
+    rates,
+    currency: TARGET_CURRENCY,
+  };
 }

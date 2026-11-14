@@ -1,9 +1,29 @@
-<!-- BEGIN:nextjs-agent-rules -->
+## Проект DAYBOOK / Finance
 
-## This is NOT the Next.js you know
+Одностраничное приложение на Next.js 16, React 19, TypeScript и Tailwind CSS 4.
+Оно загружает ежедневные платежи из двух внешних источников, приводит их к
+единому виду, конвертирует в USD и отображает финансовую сводку.
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+### Структура
 
-This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+- `app/page.tsx` — корневой маршрут и серверная загрузка данных.
+- `app/revenue-dashboard.tsx` — клиентский интерфейс сводки и повторный запрос.
+- `app/lib/revenue.ts` — запросы к API, нормализация и расчёт выручки.
+- `app/layout.tsx` и `app/globals.css` — общий layout, metadata и глобальные стили.
 
-<!-- END:nextjs-agent-rules -->
+### Общие правила
+
+- Пиши TypeScript в строгом режиме и сохраняй текущую простую структуру `app/`.
+- Не добавляй зависимости, маршруты, состояние или абстракции без потребности задачи.
+- Не переноси серверные ключи, запросы к внешним API и расчёт выручки в клиентский
+  компонент.
+- Перед изменениями прочитай правило, которое соответствует затронутым файлам.
+
+### Тематические правила
+
+| Правило | Для каких задач | Когда подключать |
+| --- | --- | --- |
+| @.codex/rules/nextjs-architecture.md | Маршруты, Server/Client Components, загрузка данных, metadata и обработка ошибок | При изменении `app/page.tsx`, `app/layout.tsx`, компонентов с `"use client"` или способа загрузки данных |
+| @.codex/rules/financial-data.md | Внешние финансовые API, нормализация транзакций, валютные курсы и расчёт итогов | При изменении `app/lib/revenue.ts` или данных, которые получает dashboard |
+| @.codex/rules/ui-styling.md | Интерфейс, Tailwind CSS, адаптивность и доступность интерактивных элементов | При изменении JSX-разметки, `globals.css` или визуального поведения dashboard |
+| @.codex/rules/quality-checks.md | Типы, линтинг, сборка и проверка изменений | Перед завершением задач, которые меняют код или конфигурацию |
