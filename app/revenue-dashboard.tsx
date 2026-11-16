@@ -35,7 +35,7 @@ export default function RevenueDashboard({ result, error, updatedAt, year }: Pro
             <span className="grid h-10 w-10 place-items-center rounded-xl bg-indigo-600 text-lg font-bold text-white shadow-lg shadow-indigo-200">₿</span>
             <span className="text-sm font-semibold tracking-tight">DAYBOOK <span className="font-normal text-slate-400">/ Finance</span></span>
           </Link>
-          <span className="hidden items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1.5 text-xs font-medium text-emerald-700 sm:inline-flex"><i className="h-1.5 w-1.5 rounded-full bg-emerald-500" />Живые данные</span>
+          <nav className="flex items-center gap-4 text-xs font-medium text-slate-500" aria-label="Основная навигация"><Link className="transition-colors hover:text-indigo-600" href="/sources">Источники</Link><span className="hidden items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1.5 text-emerald-700 sm:inline-flex"><i className="h-1.5 w-1.5 rounded-full bg-emerald-500" />Живые данные</span></nav>
         </header>
 
         <section className="py-10 sm:py-14">
